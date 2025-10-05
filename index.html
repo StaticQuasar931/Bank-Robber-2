@@ -12,24 +12,24 @@
   <!-- Page Title -->
   <title>Play Bank Robbery 2 - StaticQuasar931 Unblocked Heist Shooter</title>
 
-  <!-- Favicon (dynamic - will be swapped via JS and remembered) -->
-  <link id="favLink" rel="icon" href="https://res.cloudinary.com/dcsrqennd/image/upload/v1759704548/Bank_Robbery_2_StaticQuasar931_kgnnag.avif" />
+  <!-- Favicon (dynamic - controlled by switcher with memory) -->
+  <link id="dynamicFavicon" rel="icon" href="https://res.cloudinary.com/dcsrqennd/image/upload/v1759704548/Bank_Robbery_2_StaticQuasar931_kgnnag.avif" />
 
   <!-- Primary SEO -->
-  <meta name="description" content="Play Bank Robbery 2 - gear up, grab the loot, and fight your way out. Free, fullscreen, and school-safe on Chromebook, PC, and mobile via StaticQuasar931." />
-  <meta name="keywords" content="Bank Robbery 2, bank robbery game, heist shooter, bank robbery unblocked, browser FPS, school safe games, Chromebook games, StaticQuasar931, static, static 931, staticq, staticq931, staticquasar931, 931 games, unbl0cked game, unblocked g@me, bank robbery 2 unblocked, bank robbery 2 school, bank robbery 2 working at school" />
+  <meta id="metaDescription" name="description" content="Play Bank Robbery 2 - gear up, grab the loot, and fight your way out. Free, fullscreen, and school-safe on Chromebook, PC, and mobile via StaticQuasar931." />
+  <meta id="metaKeywords" name="keywords" content="Bank Robbery 2, bank robbery game, heist shooter, bank robbery unblocked, browser FPS, school safe games, Chromebook games, StaticQuasar931, static, static 931, staticq, staticq931, staticquasar931, 931 games, unbl0cked game, unblocked g@me, bank robbery 2 unblocked, bank robbery 2 school, bank robbery 2 working at school" />
   <meta name="theme-color" content="#000000" />
 
   <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Bank Robbery 2 - Unblocked by StaticQuasar931" />
-  <meta property="og:description" content="High intensity heist action in your browser. Free, fullscreen, school-safe." />
+  <meta id="ogTitle" property="og:title" content="Bank Robbery 2 - Unblocked by StaticQuasar931" />
+  <meta id="ogDesc" property="og:description" content="High intensity heist action in your browser. Free, fullscreen, school-safe." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://staticquasar931.github.io/bank-robbery-2/" />
-  <meta property="og:image" content="https://res.cloudinary.com/dcsrqennd/image/upload/v1759704548/Bank_Robbery_2_StaticQuasar931_kgnnag.avif" />
-  <meta property="og:image:alt" content="Bank Robbery 2 banner - masked heist action (StaticQuasar931)" />
+  <meta id="ogUrl" property="og:url" content="https://staticquasar931.github.io/bank-robbery-2/" />
+  <meta id="ogImage" property="og:image" content="https://res.cloudinary.com/dcsrqennd/image/upload/v1759704548/Bank_Robbery_2_StaticQuasar931_kgnnag.avif" />
+  <meta id="ogImageAlt" property="og:image:alt" content="Bank Robbery 2 banner - masked heist action (StaticQuasar931)" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://res.cloudinary.com/dcsrqennd/image/upload/v1759704548/Bank_Robbery_2_StaticQuasar931_kgnnag.avif" />
-  <meta name="twitter:image:alt" content="Bank Robbery 2 banner - masked heist action (StaticQuasar931)" />
+  <meta id="twImage" name="twitter:image" content="https://res.cloudinary.com/dcsrqennd/image/upload/v1759704548/Bank_Robbery_2_StaticQuasar931_kgnnag.avif" />
+  <meta id="twImageAlt" name="twitter:image:alt" content="Bank Robbery 2 banner - masked heist action (StaticQuasar931)" />
 
   <!-- Preload: hero + rotator icons -->
   <link rel="preload" as="image" href="https://res.cloudinary.com/dcsrqennd/image/upload/v1759704548/Bank_Robbery_2_StaticQuasar931_kgnnag.avif" />
@@ -75,99 +75,87 @@
     }
     #staticSlideMenu a{ display:block; width:100%; height:100% }
     #staticSlideMenu img{ width:100%; height:100%; object-fit:cover; border-radius:50%; }
-
-    /* 2s in/out slide; 5s visible; 20s hidden handled in JS */
     .slide-in{ animation:slideIn 2s ease forwards }
     .slide-out{ animation:slideOut 2s ease forwards }
     @keyframes slideIn{ from{opacity:0; transform:translateX(140px) scale(.96)} to{opacity:1; transform:translateX(0) scale(1)} }
     @keyframes slideOut{ from{opacity:1; transform:translateX(0) scale(1)} to{opacity:0; transform:translateX(140px) scale(.96)} }
+
+    /* Top-right Options menu - favicon switcher from wrapper */
+    #topRightMenuWrap{
+      position:fixed; top:12px; right:12px; z-index:100000;
+      transition:opacity .35s ease, transform .35s ease, visibility .35s ease;
+      font-family:inherit;
+      display:flex; flex-direction:column; align-items:flex-end; gap:8px;
+    }
+    #menuButton{
+      appearance:none; border:0; cursor:pointer;
+      background:linear-gradient(135deg, rgba(20,20,28,.9), rgba(20,20,28,.6));
+      color:#e8f3ff; padding:10px 14px; border-radius:12px;
+      font-weight:700; box-shadow:var(--glow), var(--shadow);
+      border:1px solid rgba(94,225,255,.35);
+    }
+    #dropdown{
+      position:absolute; right:0; top:46px; min-width:280px;
+      background:linear-gradient(135deg, rgba(20,20,28,.95), rgba(20,20,28,.7));
+      color:#eaffff; border-radius:12px;
+      box-shadow:0 10px 24px rgba(0,0,0,.4); padding:10px; display:none;
+      border:1px solid rgba(94,225,255,.35);
+    }
+    #dropdown button{
+      width:100%; text-align:left; background:transparent; color:inherit;
+      border:0; padding:10px 12px; border-radius:8px; cursor:pointer;
+    }
+    #dropdown button:hover{ background:rgba(94,225,255,.12); }
+    #dropdown .opt-title{ font-weight:800; margin-bottom:2px; }
+    #dropdown small{ display:block; opacity:.8; font-size:11px; line-height:1.35; }
+    #restoreHint{
+      display:none; background:#111; color:#fff; padding:8px 12px; border-radius:10px; font-size:12px;
+      box-shadow:0 0 10px rgba(255,255,255,.2);
+    }
+
+    /* Hide menus via Y+U+I */
+    .menus-hidden #staticMenu,
+    .menus-hidden #staticSlideMenu,
+    .menus-hidden #topRightMenuWrap{
+      opacity:0; transform:translateY(10px) scale(.98); visibility:hidden;
+    }
 
     /* Hidden SEO content (for crawlers only) */
     .seo-hidden{
       position:absolute; width:1px; height:1px; overflow:hidden;
       clip:rect(1px,1px,1px,1px); white-space:nowrap;
     }
-
-    /* Y+U+I global toggle */
-    .menus-hidden #staticMenu,
-    .menus-hidden #staticSlideMenu,
-    .menus-hidden #favMenu{ opacity:0 !important; visibility:hidden; transition:opacity .35s ease, visibility .35s ease; }
-
-    /* Favicon Switcher Menu - top right */
-    #favMenu{
-      position:fixed; top:12px; right:12px; z-index:9999;
-      display:flex; flex-direction:column; align-items:flex-end; gap:8px;
-    }
-    #favToggle{
-      cursor:pointer; user-select:none;
-      background:linear-gradient(135deg, rgba(20,20,28,.9), rgba(20,20,28,.6));
-      color:#e8f3ff; padding:8px 12px; border-radius:12px;
-      border:1px solid rgba(94,225,255,.35);
-      box-shadow:var(--glow), var(--shadow);
-      font-size:14px; display:flex; align-items:center; gap:8px;
-      transition:transform .15s ease;
-    }
-    #favToggle:active{ transform:scale(.98); }
-    #favPanel{
-      min-width:240px; max-width:280px;
-      background:linear-gradient(135deg, rgba(20,20,28,.95), rgba(20,20,28,.7));
-      color:#e8f3ff; padding:10px; border-radius:12px;
-      border:1px solid rgba(94,225,255,.35); box-shadow:var(--glow), var(--shadow);
-      display:none;
-    }
-    #favPanel.open{ display:block; animation:menuEnter .25s ease both; }
-    .fav-row{ display:flex; gap:10px; align-items:center; margin-top:8px; flex-wrap:wrap; }
-    .fav-choice{
-      width:44px; height:44px; border-radius:10px; overflow:hidden; cursor:pointer;
-      border:2px solid rgba(255,255,255,.15); background:#0b0f14; display:grid; place-items:center;
-      transition:transform .12s ease, border-color .12s ease, box-shadow .12s ease;
-    }
-    .fav-choice img{ width:100%; height:100%; object-fit:cover; display:block; }
-    .fav-choice:focus-visible{ outline:2px solid var(--brand); outline-offset:2px; }
-    .fav-choice.active{ border-color:var(--brand); box-shadow:0 0 0 3px rgba(94,225,255,.25); }
-    #favActions{ display:flex; gap:8px; margin-top:10px; }
-    .fav-btn{
-      background:#0b0f14; border:1px solid rgba(255,255,255,.15); color:#e8f3ff;
-      padding:6px 10px; border-radius:10px; cursor:pointer; font-size:13px;
-      transition:background .12s ease, transform .12s ease;
-    }
-    .fav-btn:hover{ background:#101722; }
-    .fav-btn:active{ transform:scale(.98); }
-    .hint{ font-size:12px; color:#9fc9ff; margin-top:6px; opacity:.9 }
   </style>
 </head>
 <body>
   <!-- Static Menu -->
-  <div id="staticMenu" role="region" aria-label="StaticQuasar menu" title="Tip: press Shift+F to switch the favicon. Choice is remembered.">
+  <div id="staticMenu" role="region" aria-label="StaticQuasar menu">
     <a href="https://sites.google.com/view/staticquasar931/gm3z" target="_blank" rel="noopener">More Unblocked Games by Static</a>
     <span id="closeStaticMenu" title="Hide temporarily">✕</span>
   </div>
 
-  <!-- Favicon Switcher Menu - top right -->
-  <div id="favMenu" role="region" aria-label="Favicon switcher menu">
-    <button id="favToggle" aria-expanded="false" aria-controls="favPanel" title="Open favicon switcher">
-      <span>Favicon</span>
-      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm8.94-3.5c0-.69-.08-1.35-.22-2l2.28-1.78-2-3.46-2.75 1.1a8.07 8.07 0 0 0-3.46-2L12 1h-4l-.79 2.86a8.07 8.07 0 0 0-3.46 2L1 5.76l-2 3.46 2.28 1.78c-.14.65-.22 1.31-.22 2s.08 1.35.22 2L-1 15.02l2 3.46 2.75-1.1a8.07 8.07 0 0 0 3.46 2L8 23h4l.79-2.86a8.07 8.07 0 0 0 3.46-2l2.75 1.1 2-3.46-2.28-1.78c.14-.65.22-1.31.22-2Z"/></svg>
-    </button>
-    <div id="favPanel" aria-hidden="true">
-      <div class="fav-row" id="favChoices" role="listbox" aria-label="Choose a favicon">
-        <button class="fav-choice" data-index="0" role="option" aria-label="Game banner favicon">
-          <img src="https://res.cloudinary.com/dcsrqennd/image/upload/v1759704548/Bank_Robbery_2_StaticQuasar931_kgnnag.avif" alt="Game banner icon" />
-        </button>
-        <button class="fav-choice" data-index="1" role="option" aria-label="Google Form favicon">
-          <img src="https://res.cloudinary.com/dcsrqennd/image/upload/v1747533056/raw_um4pvq.png" alt="Google Form icon" />
-        </button>
-        <button class="fav-choice" data-index="2" role="option" aria-label="Instagram favicon">
-          <img src="https://res.cloudinary.com/dcsrqennd/image/upload/v1747533158/raw_cw34yi.png" alt="Instagram icon" />
-        </button>
+  <!-- Top-right: Favicon Options Menu (from your wrapper) -->
+  <div id="topRightMenuWrap" aria-label="Options menu">
+    <button id="menuButton" aria-haspopup="true" aria-expanded="false">☰ Options</button>
+    <div id="dropdown" role="menu" aria-label="Options dropdown">
+      <div style="padding:8px 10px 2px; font-size:12px; opacity:.85;">
+        Your favicon choice is saved locally. Press Shift+F to cycle fast.
       </div>
-      <div id="favActions">
-        <button id="favCycle" class="fav-btn" title="Cycle favicon (Shift+F)">Cycle</button>
-        <button id="favReset" class="fav-btn" title="Reset to default">Reset</button>
-        <button id="favClose" class="fav-btn" title="Close menu">Close</button>
-      </div>
-      <div class="hint">Tip: press Shift+F to cycle. Your choice is saved locally.</div>
+      <hr style="opacity:.15;border:none;border-top:1px solid #ffffff22;margin:8px 0;">
+      <button id="optMainFavicon" role="menuitem">
+        <div class="opt-title">Use or keep main favicon</div>
+        <small>Sets the game banner icon and original title.</small>
+      </button>
+      <button id="optAeries" role="menuitem">
+        <div class="opt-title">Switch to Aeries Student Dashboard</div>
+        <small>Changes page title and favicon to an Aeries style.</small>
+      </button>
+      <button id="optHideMenu" role="menuitem">
+        <div class="opt-title">Hide this menu</div>
+        <small>Hides the button and dropdown. Press O+P to bring it back.</small>
+      </button>
     </div>
+    <div id="restoreHint" aria-live="polite">Menu hidden - press O+P to show</div>
   </div>
 
   <!-- Rotating Icon (bottom-right) -->
@@ -193,7 +181,7 @@
   <!-- Hidden SEO -->
   <div class="seo-hidden" aria-hidden="true">
     <h1>Bank Robbery 2 - Unblocked Heist Shooter</h1>
-    <p><strong>Bank Robbery 2</strong> drops you into a high stakes heist: secure the vault, fend off guards, and make a clean getaway. This page by <strong>StaticQuasar931</strong> runs the game <strong>unblocked</strong> and <strong>school-safe</strong> on Chromebook, PC, and mobile. It is optimized for fast loads, fullscreen support, and reliable input across devices. If a version fails to load, try again or check your network filter rules.</p>
+    <p><strong>Bank Robbery 2</strong> drops you into a high stakes heist: secure the vault, fend off guards, and make a clean getaway. This page by <strong>StaticQuasar931</strong> runs the game <strong>unblocked</strong> and <strong>school-safe</strong> on Chromebook, PC, and mobile. It is optimized for fast loads, fullscreen support, and reliable input across devices.</p>
     <ul>
       <li>Heist gameplay with intense firefights and quick escapes</li>
       <li>Plan the route, manage ammo, coordinate your getaway</li>
@@ -201,10 +189,16 @@
       <li>Free, fullscreen, no download required, works at school</li>
       <li>Part of the StaticQuasar931 unblocked games library</li>
     </ul>
-    <p>Keywords: Bank Robbery 2, bank robbery unblocked, heist FPS browser, school safe shooter, Chromebook action game, StaticQuasar931, static, staticquasar931, static 931, staticq, staticq931, 931, unbl0cked game, unblocked g@me, bank robbery 2 unblocked at school, bank robbery 2 working at school.</p>
+    <p>Keywords: Bank Robbery 2, bank robbery unblocked, heist FPS browser, school safe shooter, Chromebook action game, StaticQuasar931, static, staticquasar931, static 931, staticq, staticq931, 931, unbl0cked game, unblocked g@me.</p>
   </div>
 
   <script>
+    // Canonical and OG URL - ensure self link
+    (function(){
+      const here = location.href.split('#')[0];
+      document.getElementById('ogUrl').setAttribute('content', here);
+    })();
+
     // Leave warning
     window.onbeforeunload = () => "Leave this page? Your progress may not be saved.";
 
@@ -246,7 +240,7 @@
       };
       const INSTA = {
         src: "https://res.cloudinary.com/dcsrqennd/image/upload/v1747533158/raw_cw34yi.png",
-        alt: "StaticQuasar931 Instagram (opens in a new tab)",
+        alt: "StaticQuasar931 Instagram - opens in a new tab",
         link:"https://www.instagram.com/freeschoolgamepage/"
       };
       const ROTATION = [FORM, INSTA];
@@ -302,97 +296,122 @@
       addEventListener('blur', () => down.clear());
     })();
 
-    // Favicon switcher with memory + top right UI
+    /* ====== FAVICON SWITCHER MENU - from your wrapper, adapted for this single page ====== */
     (function(){
-      const KEY = "sq931_favicon_choice";
+      const KEY_CHOICE = "sq931_favicon_choice_index";
+      const KEY_HIDDEN = "sq931_favicon_menu_hidden";
+      const AERIES_ICON  = "https://res.cloudinary.com/dcsrqennd/image/upload/v1758856727/Aeries_Favicon_Unblocked_StaticQuasar931_zkdjbd.webp";
+      const AERIES_TITLE = "Aeries Student Dashboard";
+
+      const btn     = document.getElementById('menuButton');
+      const dd      = document.getElementById('dropdown');
+      const optMain = document.getElementById('optMainFavicon');
+      const optAer  = document.getElementById('optAeries');
+      const optHide = document.getElementById('optHideMenu');
+      const wrap    = document.getElementById('topRightMenuWrap');
+      const hint    = document.getElementById('restoreHint');
+
       const favs = [
-        // Primary game banner
+        // 0 - Main game banner
         "https://res.cloudinary.com/dcsrqennd/image/upload/v1759704548/Bank_Robbery_2_StaticQuasar931_kgnnag.avif",
-        // Alt 1 - Google Form icon
+        // 1 - Google Form icon
         "https://res.cloudinary.com/dcsrqennd/image/upload/v1747533056/raw_um4pvq.png",
-        // Alt 2 - Instagram icon
+        // 2 - Instagram icon
         "https://res.cloudinary.com/dcsrqennd/image/upload/v1747533158/raw_cw34yi.png"
       ];
-      const link = document.getElementById("favLink");
-      const toggle = document.getElementById("favToggle");
-      const panel = document.getElementById("favPanel");
-      const closeBtn = document.getElementById("favClose");
-      const resetBtn = document.getElementById("favReset");
-      const cycleBtn = document.getElementById("favCycle");
-      const choices = Array.from(document.querySelectorAll(".fav-choice"));
 
       function setFavicon(url){
-        if (!link) return;
+        let link = document.querySelector('link#dynamicFavicon[rel="icon"]')
+                || document.querySelector('link[rel="icon"]');
+        if (!link){
+          link = document.createElement('link');
+          link.rel = 'icon';
+          link.id  = 'dynamicFavicon';
+          document.head.appendChild(link);
+        }
+        try {
+          const isWebp = /\.webp(\?|$)/i.test(url);
+          const isPng  = /\.png(\?|$)/i.test(url);
+          link.type = isWebp ? 'image/webp' : (isPng ? 'image/png' : '');
+        } catch(_) {}
         link.href = url;
       }
 
-      // Restore saved favicon
-      let idx = parseInt(localStorage.getItem(KEY) || "0", 10);
+      // Load last chosen favicon index if any
+      let idx = parseInt(localStorage.getItem(KEY_CHOICE) || "0", 10);
       if (Number.isNaN(idx) || idx < 0 || idx >= favs.length) idx = 0;
       setFavicon(favs[idx]);
 
-      function updateActive(){
-        choices.forEach(c => c.classList.toggle("active", parseInt(c.dataset.index,10) === idx));
+      // Dropdown helpers
+      function closeDropdown(){ dd.style.display='none'; btn.setAttribute('aria-expanded','false'); }
+      function toggleDropdown(){
+        const open = dd.style.display==='block';
+        dd.style.display = open ? 'none' : 'block';
+        btn.setAttribute('aria-expanded', String(!open));
       }
-      updateActive();
 
-      // Keyboard switcher: Shift+F cycles, persists to localStorage
+      // Wire up dropdown open-close
+      btn.addEventListener('click', (e)=>{ e.stopPropagation(); toggleDropdown(); });
+      document.addEventListener('click', ()=> closeDropdown());
+      document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeDropdown(); });
+
+      // Main favicon option - restore primary favicon and original title
+      const ORIGINAL_TITLE = document.title;
+      optMain.addEventListener('click', ()=>{
+        idx = 0;
+        setFavicon(favs[idx]);
+        try { localStorage.setItem(KEY_CHOICE, String(idx)); } catch(_) {}
+        document.title = ORIGINAL_TITLE;
+        closeDropdown();
+      });
+
+      // Aeries option - spoof icon and change title
+      optAer.addEventListener('click', ()=>{
+        setFavicon(AERIES_ICON);
+        document.title = AERIES_TITLE;
+        // do not overwrite the index, this is an override
+        closeDropdown();
+      });
+
+      // Hide menu option with O+P restore
+      optHide.addEventListener('click', ()=>{
+        wrap.style.display = 'none';
+        try { localStorage.setItem(KEY_HIDDEN, "1"); } catch(_) {}
+        hint.style.display = 'block';
+        setTimeout(()=>{ hint.style.display = 'none'; }, 4000);
+        closeDropdown();
+      });
+
+      // Restore hotkey O + P
+      const down = new Set();
+      function checkRestore(){
+        if (down.has('o') && down.has('p')) {
+          wrap.style.display = 'flex';
+          try { localStorage.removeItem(KEY_HIDDEN); } catch(_) {}
+        }
+      }
+      window.addEventListener('keydown', (e)=>{ down.add((e.key||'').toLowerCase()); checkRestore(); });
+      window.addEventListener('keyup',   (e)=>{ down.delete((e.key||'').toLowerCase()); });
+      window.addEventListener('blur',    ()=> down.clear());
+
+      // If previously hidden, keep it hidden until restored
+      try {
+        if (localStorage.getItem(KEY_HIDDEN) === "1") {
+          wrap.style.display = 'none';
+        }
+      } catch(_) {}
+
+      // Keyboard cycle Shift+F - saves choice
       addEventListener("keydown", (e)=>{
         if (e.key && e.key.toLowerCase() === "f" && e.shiftKey){
           idx = (idx + 1) % favs.length;
           setFavicon(favs[idx]);
-          try { localStorage.setItem(KEY, String(idx)); } catch(_) {}
-          updateActive();
+          try { localStorage.setItem(KEY_CHOICE, String(idx)); } catch(_) {}
         }
       });
-
-      // UI interactions
-      toggle.addEventListener("click", ()=>{
-        const open = panel.classList.toggle("open");
-        toggle.setAttribute("aria-expanded", String(open));
-        panel.setAttribute("aria-hidden", String(!open));
-      });
-      closeBtn.addEventListener("click", ()=>{
-        panel.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
-        panel.setAttribute("aria-hidden", "true");
-      });
-      resetBtn.addEventListener("click", ()=>{
-        idx = 0;
-        setFavicon(favs[idx]);
-        try { localStorage.setItem(KEY, String(idx)); } catch(_) {}
-        updateActive();
-      });
-      cycleBtn.addEventListener("click", ()=>{
-        idx = (idx + 1) % favs.length;
-        setFavicon(favs[idx]);
-        try { localStorage.setItem(KEY, String(idx)); } catch(_) {}
-        updateActive();
-      });
-      choices.forEach(btn=>{
-        btn.addEventListener("click", ()=>{
-          const i = parseInt(btn.dataset.index,10);
-          if (!Number.isNaN(i)){
-            idx = i;
-            setFavicon(favs[idx]);
-            try { localStorage.setItem(KEY, String(idx)); } catch(_) {}
-            updateActive();
-          }
-        });
-      });
-
-      // Also expose a programmatic API if needed
-      window.SQ931 = window.SQ931 || {};
-      window.SQ931.setFaviconIndex = function(newIndex){
-        if (typeof newIndex !== "number") return;
-        idx = ((newIndex % favs.length) + favs.length) % favs.length;
-        setFavicon(favs[idx]);
-        try { localStorage.setItem(KEY, String(idx)); } catch(_) {}
-        updateActive();
-      };
     })();
 
-    // Auto fit iframe on resize
+    // Auto fit iframe on resize just in case
     (function(){
       const el = document.getElementById("game");
       function fit(){ el.style.width = innerWidth + "px"; el.style.height = innerHeight + "px"; }
