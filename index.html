@@ -5,36 +5,35 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Canonical (Google Sites page for this embed) & Robots -->
-  <link rel="canonical" href="https://sites.google.com/view/staticquasar931/gm3z/bank-robbery-2" />
+  <!-- Canonical (GitHub Pages) & Robots -->
+  <link rel="canonical" href="https://staticquasar931.github.io/bank-robbery-2/" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
 
   <!-- Page Title -->
-  <title>Play Bank Robbery 2 – StaticQuasar931 Unblocked Heist Shooter</title>
+  <title>Play Bank Robbery 2 - StaticQuasar931 Unblocked Heist Shooter</title>
 
-  <!-- Favicon -->
-  <link rel="icon" href="https://res.cloudinary.com/dcsrqennd/image/upload/v1759704548/Bank_Robbery_2_StaticQuasar931_kgnnag.avif" />
+  <!-- Favicon (dynamic - will be swapped via JS and remembered) -->
+  <link id="favLink" rel="icon" href="https://res.cloudinary.com/dcsrqennd/image/upload/v1759704548/Bank_Robbery_2_StaticQuasar931_kgnnag.avif" />
 
   <!-- Primary SEO -->
-  <meta name="description" content="Play Bank Robbery 2 — gear up, grab the loot, and fight your way out. Free, fullscreen, and school-safe on Chromebook, PC, and mobile via StaticQuasar931." />
-  <meta name="keywords" content="Bank Robbery 2, bank robbery game, heist shooter, bank robbery unblocked, browser FPS, school safe games, Chromebook games, StaticQuasar931" />
+  <meta name="description" content="Play Bank Robbery 2 - gear up, grab the loot, and fight your way out. Free, fullscreen, and school-safe on Chromebook, PC, and mobile via StaticQuasar931." />
+  <meta name="keywords" content="Bank Robbery 2, bank robbery game, heist shooter, bank robbery unblocked, browser FPS, school safe games, Chromebook games, StaticQuasar931, static, static 931, staticq, staticq931, staticquasar931, 931 games, unbl0cked game, unblocked g@me, bank robbery 2 unblocked, bank robbery 2 school, bank robbery 2 working at school" />
   <meta name="theme-color" content="#000000" />
 
   <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Bank Robbery 2 – Unblocked by StaticQuasar931" />
-  <meta property="og:description" content="High-intensity heist action in your browser. Free, fullscreen, school-safe." />
+  <meta property="og:title" content="Bank Robbery 2 - Unblocked by StaticQuasar931" />
+  <meta property="og:description" content="High intensity heist action in your browser. Free, fullscreen, school-safe." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://sites.google.com/view/staticquasar931/gm3z/bank-robbery-2" />
+  <meta property="og:url" content="https://staticquasar931.github.io/bank-robbery-2/" />
   <meta property="og:image" content="https://res.cloudinary.com/dcsrqennd/image/upload/v1759704548/Bank_Robbery_2_StaticQuasar931_kgnnag.avif" />
-  <meta property="og:image:alt" content="Bank Robbery 2 banner — masked heist action (StaticQuasar931)" />
+  <meta property="og:image:alt" content="Bank Robbery 2 banner - masked heist action (StaticQuasar931)" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://res.cloudinary.com/dcsrqennd/image/upload/v1759704548/Bank_Robbery_2_StaticQuasar931_kgnnag.avif" />
-  <meta name="twitter:image:alt" content="Bank Robbery 2 banner — masked heist action (StaticQuasar931)" />
+  <meta name="twitter:image:alt" content="Bank Robbery 2 banner - masked heist action (StaticQuasar931)" />
 
   <!-- Preload: hero + rotator icons -->
   <link rel="preload" as="image" href="https://res.cloudinary.com/dcsrqennd/image/upload/v1759704548/Bank_Robbery_2_StaticQuasar931_kgnnag.avif" />
   <link rel="preload" as="image" href="https://res.cloudinary.com/dcsrqennd/image/upload/v1747533056/raw_um4pvq.png" />
-  <link rel="preload" as="image" href="https://res.cloudinary.com/dcsrqennd/image/upload/v1758072526/Join_Our_Discord_StaticQuassar931_lcplrf.png" />
   <link rel="preload" as="image" href="https://res.cloudinary.com/dcsrqennd/image/upload/v1747533158/raw_cw34yi.png" />
 
   <style>
@@ -68,7 +67,7 @@
     #staticMenu a{ color:#5ee1ff; font-weight:800; text-decoration:none }
     #closeStaticMenu{ color:#f55; cursor:pointer; padding:2px 6px; border-radius:6px; border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.06) }
 
-    /* Rotating Icon (bottom-right): Form → Discord (20% bigger) → Instagram */
+    /* Rotating Icon (bottom-right): Form -> Instagram, per SQ standard */
     #staticSlideMenu{
       position:fixed; bottom:24px; right:24px; z-index:9999;
       width:100px; height:100px; pointer-events:none; opacity:0;
@@ -76,7 +75,6 @@
     }
     #staticSlideMenu a{ display:block; width:100%; height:100% }
     #staticSlideMenu img{ width:100%; height:100%; object-fit:cover; border-radius:50%; }
-    #staticSlideMenu.discord img{ transform:scale(1.2); } /* 20% bigger on Discord */
 
     /* 2s in/out slide; 5s visible; 20s hidden handled in JS */
     .slide-in{ animation:slideIn 2s ease forwards }
@@ -97,7 +95,7 @@
 </head>
 <body>
   <!-- Static Menu -->
-  <div id="staticMenu" role="region" aria-label="StaticQuasar menu">
+  <div id="staticMenu" role="region" aria-label="StaticQuasar menu" title="Tip: press Shift+F to switch the favicon. Choice is remembered.">
     <a href="https://sites.google.com/view/staticquasar931/gm3z" target="_blank" rel="noopener">More Unblocked Games by Static</a>
     <span id="closeStaticMenu" title="Hide temporarily">✕</span>
   </div>
@@ -105,7 +103,7 @@
   <!-- Rotating Icon (bottom-right) -->
   <div id="staticSlideMenu" class="" aria-live="polite">
     <a id="staticSlideLink" href="https://sites.google.com/view/staticquasar931/google-form" target="_blank" rel="noopener" aria-label="Open Google Form">
-      <img id="staticSlideImg" src="https://res.cloudinary.com/dcsrqennd/image/upload/v1747533056/raw_um4pvq.png" alt="StaticQuasar931 Google Form — feedback & game requests" />
+      <img id="staticSlideImg" src="https://res.cloudinary.com/dcsrqennd/image/upload/v1747533056/raw_um4pvq.png" alt="StaticQuasar931 Google Form - feedback & game requests" />
     </a>
   </div>
 
@@ -114,7 +112,7 @@
     id="game"
     src="https://storage.googleapis.com/test-41376.appspot.com/br2.html"
     allowfullscreen
-    title="Bank Robbery 2 — unblocked fullscreen by StaticQuasar931"
+    title="Bank Robbery 2 - unblocked fullscreen by StaticQuasar931"
     loading="eager"
     scrolling="no"
     allow="autoplay; fullscreen; gamepad; xr-spatial-tracking; cross-origin-isolated"
@@ -124,19 +122,20 @@
 
   <!-- Hidden SEO -->
   <div class="seo-hidden" aria-hidden="true">
-    <h1>Bank Robbery 2 – Unblocked Heist Shooter</h1>
-    <p><strong>Bank Robbery 2</strong> drops you into a high-stakes heist: secure the vault, fend off guards, and make a clean getaway. This page by <strong>StaticQuasar931</strong> runs the game <strong>unblocked</strong> and <strong>school-safe</strong> on Chromebook, PC, and mobile.</p>
+    <h1>Bank Robbery 2 - Unblocked Heist Shooter</h1>
+    <p><strong>Bank Robbery 2</strong> drops you into a high stakes heist: secure the vault, fend off guards, and make a clean getaway. This page by <strong>StaticQuasar931</strong> runs the game <strong>unblocked</strong> and <strong>school-safe</strong> on Chromebook, PC, and mobile. It is optimized for fast loads, fullscreen support, and reliable input across devices. If a version fails to load, try again or check your network filter rules.</p>
     <ul>
-      <li>💰 Heist gameplay with intense firefights</li>
-      <li>🧠 Plan the route, manage ammo, and escape fast</li>
-      <li>💻 Chromebook, PC, and mobile compatible</li>
-      <li>🪄 Free, fullscreen, no download required</li>
+      <li>💰 Heist gameplay with intense firefights and quick escapes</li>
+      <li>🧠 Plan the route, manage ammo, coordinate your getaway</li>
+      <li>💻 Chromebook, PC, and mobile compatible with pointer lock</li>
+      <li>🪄 Free, fullscreen, no download required, works at school</li>
+      <li>🔗 Part of the StaticQuasar931 unblocked games library</li>
     </ul>
-    <p>Keywords: Bank Robbery 2, bank robbery unblocked, heist FPS browser, school-safe shooter, Chromebook action games, StaticQuasar931.</p>
+    <p>Keywords: Bank Robbery 2, bank robbery unblocked, heist FPS browser, school safe shooter, Chromebook action game, StaticQuasar931, static, staticquasar931, static 931, staticq, staticq931, 931, unbl0cked game, unblocked g@me, bank robbery 2 unblocked at school, bank robbery 2 working at school.</p>
   </div>
 
   <script>
-    // Leave warning (optional)
+    // Leave warning
     window.onbeforeunload = () => "Leave this page? Your progress may not be saved.";
 
     // Static Menu hide + auto-restore (3 mins)
@@ -164,7 +163,7 @@
       maybeHide();
     })();
 
-    // Rotator: Google Form → Discord → Instagram (2s in, 5s visible, 2s out, 20s hidden). Always start with Form.
+    // Rotator: Google Form -> Instagram (2s in, 5s visible, 2s out, 20s hidden). Always start with Form.
     (function(){
       const wrap = document.getElementById("staticSlideMenu");
       const a    = document.getElementById("staticSlideLink");
@@ -172,23 +171,15 @@
 
       const FORM = {
         src: "https://res.cloudinary.com/dcsrqennd/image/upload/v1747533056/raw_um4pvq.png",
-        alt: "StaticQuasar931 Google Form — feedback & game requests",
-        link:"https://sites.google.com/view/staticquasar931/google-form",
-        cls : ""
-      };
-      const DISCORD = {
-        src: "https://res.cloudinary.com/dcsrqennd/image/upload/v1758072526/Join_Our_Discord_StaticQuassar931_lcplrf.png",
-        alt: "Join the StaticQuasar931 Discord (opens in a new tab)",
-        link:"https://discord.gg/DP2hM7RRhR",
-        cls : "discord"
+        alt: "StaticQuasar931 Google Form - feedback & game requests",
+        link:"https://sites.google.com/view/staticquasar931/google-form"
       };
       const INSTA = {
-        src: "https://res.cloudinary.com/dcsrqennd/image/upload/v1747533158/raw_cw34yi.png",
+        src: "https://res.cloudinary.com/dcsrqennd/image_upload/v1747533158/raw_cw34yi.png".replace("_upload","/upload"), // guard against copy typos
         alt: "StaticQuasar931 Instagram (opens in a new tab)",
-        link:"https://www.instagram.com/freeschoolgamepage/",
-        cls : ""
+        link:"https://www.instagram.com/freeschoolgamepage/"
       };
-      const ROTATION = [FORM, DISCORD, INSTA];
+      const ROTATION = [FORM, INSTA];
 
       const T_IN = 2000, T_SHOW = 5000, T_OUT = 2000, T_HIDDEN = 20000;
 
@@ -198,7 +189,6 @@
       let idx = 0;
       function apply(state){
         img.src = state.src; img.alt = state.alt; a.href = state.link;
-        wrap.className = state.cls ? state.cls : "";
       }
 
       async function cycle(){
@@ -240,6 +230,55 @@
       addEventListener('keydown', e => { down.add((e.key||'').toLowerCase()); check(); });
       addEventListener('keyup',   e => { down.delete((e.key||'').toLowerCase()); });
       addEventListener('blur', () => down.clear());
+    })();
+
+    // Favicon switcher with memory
+    (function(){
+      const KEY = "sq931_favicon_choice";
+      const favs = [
+        // Primary game banner
+        "https://res.cloudinary.com/dcsrqennd/image/upload/v1759704548/Bank_Robbery_2_StaticQuasar931_kgnnag.avif",
+        // Alt 1 - Google Form icon
+        "https://res.cloudinary.com/dcsrqennd/image/upload/v1747533056/raw_um4pvq.png",
+        // Alt 2 - Instagram icon
+        "https://res.cloudinary.com/dcsrqennd/image/upload/v1747533158/raw_cw34yi.png"
+      ];
+      const link = document.getElementById("favLink");
+
+      function setFavicon(url){
+        if (!link) return;
+        link.href = url;
+      }
+
+      // Restore saved favicon
+      let idx = parseInt(localStorage.getItem(KEY) || "0", 10);
+      if (Number.isNaN(idx) || idx < 0 || idx >= favs.length) idx = 0;
+      setFavicon(favs[idx]);
+
+      // Switcher: Shift+F cycles, persists to localStorage
+      addEventListener("keydown", (e)=>{
+        if (e.key.toLowerCase() === "f" && e.shiftKey){
+          idx = (idx + 1) % favs.length;
+          setFavicon(favs[idx]);
+          try { localStorage.setItem(KEY, String(idx)); } catch(_) {}
+        }
+      });
+
+      // Also expose a programmatic API if needed
+      window.SQ931 = window.SQ931 || {};
+      window.SQ931.setFaviconIndex = function(newIndex){
+        if (typeof newIndex !== "number") return;
+        idx = ((newIndex % favs.length) + favs.length) % favs.length;
+        setFavicon(favs[idx]);
+        try { localStorage.setItem(KEY, String(idx)); } catch(_) {}
+      };
+    })();
+
+    // Auto fit iframe on resize just in case
+    (function(){
+      const el = document.getElementById("game");
+      function fit(){ el.style.width = innerWidth + "px"; el.style.height = innerHeight + "px"; }
+      addEventListener("resize", fit); fit();
     })();
   </script>
 </body>
