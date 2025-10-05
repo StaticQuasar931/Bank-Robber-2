@@ -67,7 +67,7 @@
     #staticMenu a{ color:#5ee1ff; font-weight:800; text-decoration:none }
     #closeStaticMenu{ color:#f55; cursor:pointer; padding:2px 6px; border-radius:6px; border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.06) }
 
-    /* Rotating Icon (bottom-right): Form -> Instagram, per SQ standard */
+    /* Rotating Icon (bottom-right): Form -> Instagram */
     #staticSlideMenu{
       position:fixed; bottom:24px; right:24px; z-index:9999;
       width:100px; height:100px; pointer-events:none; opacity:0;
@@ -90,7 +90,50 @@
 
     /* Y+U+I global toggle */
     .menus-hidden #staticMenu,
-    .menus-hidden #staticSlideMenu{ opacity:0 !important; visibility:hidden; transition:opacity .35s ease, visibility .35s ease; }
+    .menus-hidden #staticSlideMenu,
+    .menus-hidden #favMenu{ opacity:0 !important; visibility:hidden; transition:opacity .35s ease, visibility .35s ease; }
+
+    /* Favicon Switcher Menu - top right */
+    #favMenu{
+      position:fixed; top:12px; right:12px; z-index:9999;
+      display:flex; flex-direction:column; align-items:flex-end; gap:8px;
+    }
+    #favToggle{
+      cursor:pointer; user-select:none;
+      background:linear-gradient(135deg, rgba(20,20,28,.9), rgba(20,20,28,.6));
+      color:#e8f3ff; padding:8px 12px; border-radius:12px;
+      border:1px solid rgba(94,225,255,.35);
+      box-shadow:var(--glow), var(--shadow);
+      font-size:14px; display:flex; align-items:center; gap:8px;
+      transition:transform .15s ease;
+    }
+    #favToggle:active{ transform:scale(.98); }
+    #favPanel{
+      min-width:240px; max-width:280px;
+      background:linear-gradient(135deg, rgba(20,20,28,.95), rgba(20,20,28,.7));
+      color:#e8f3ff; padding:10px; border-radius:12px;
+      border:1px solid rgba(94,225,255,.35); box-shadow:var(--glow), var(--shadow);
+      display:none;
+    }
+    #favPanel.open{ display:block; animation:menuEnter .25s ease both; }
+    .fav-row{ display:flex; gap:10px; align-items:center; margin-top:8px; flex-wrap:wrap; }
+    .fav-choice{
+      width:44px; height:44px; border-radius:10px; overflow:hidden; cursor:pointer;
+      border:2px solid rgba(255,255,255,.15); background:#0b0f14; display:grid; place-items:center;
+      transition:transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+    }
+    .fav-choice img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .fav-choice:focus-visible{ outline:2px solid var(--brand); outline-offset:2px; }
+    .fav-choice.active{ border-color:var(--brand); box-shadow:0 0 0 3px rgba(94,225,255,.25); }
+    #favActions{ display:flex; gap:8px; margin-top:10px; }
+    .fav-btn{
+      background:#0b0f14; border:1px solid rgba(255,255,255,.15); color:#e8f3ff;
+      padding:6px 10px; border-radius:10px; cursor:pointer; font-size:13px;
+      transition:background .12s ease, transform .12s ease;
+    }
+    .fav-btn:hover{ background:#101722; }
+    .fav-btn:active{ transform:scale(.98); }
+    .hint{ font-size:12px; color:#9fc9ff; margin-top:6px; opacity:.9 }
   </style>
 </head>
 <body>
@@ -100,10 +143,37 @@
     <span id="closeStaticMenu" title="Hide temporarily">✕</span>
   </div>
 
+  <!-- Favicon Switcher Menu - top right -->
+  <div id="favMenu" role="region" aria-label="Favicon switcher menu">
+    <button id="favToggle" aria-expanded="false" aria-controls="favPanel" title="Open favicon switcher">
+      <span>Favicon</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm8.94-3.5c0-.69-.08-1.35-.22-2l2.28-1.78-2-3.46-2.75 1.1a8.07 8.07 0 0 0-3.46-2L12 1h-4l-.79 2.86a8.07 8.07 0 0 0-3.46 2L1 5.76l-2 3.46 2.28 1.78c-.14.65-.22 1.31-.22 2s.08 1.35.22 2L-1 15.02l2 3.46 2.75-1.1a8.07 8.07 0 0 0 3.46 2L8 23h4l.79-2.86a8.07 8.07 0 0 0 3.46-2l2.75 1.1 2-3.46-2.28-1.78c.14-.65.22-1.31.22-2Z"/></svg>
+    </button>
+    <div id="favPanel" aria-hidden="true">
+      <div class="fav-row" id="favChoices" role="listbox" aria-label="Choose a favicon">
+        <button class="fav-choice" data-index="0" role="option" aria-label="Game banner favicon">
+          <img src="https://res.cloudinary.com/dcsrqennd/image/upload/v1759704548/Bank_Robbery_2_StaticQuasar931_kgnnag.avif" alt="Game banner icon" />
+        </button>
+        <button class="fav-choice" data-index="1" role="option" aria-label="Google Form favicon">
+          <img src="https://res.cloudinary.com/dcsrqennd/image/upload/v1747533056/raw_um4pvq.png" alt="Google Form icon" />
+        </button>
+        <button class="fav-choice" data-index="2" role="option" aria-label="Instagram favicon">
+          <img src="https://res.cloudinary.com/dcsrqennd/image/upload/v1747533158/raw_cw34yi.png" alt="Instagram icon" />
+        </button>
+      </div>
+      <div id="favActions">
+        <button id="favCycle" class="fav-btn" title="Cycle favicon (Shift+F)">Cycle</button>
+        <button id="favReset" class="fav-btn" title="Reset to default">Reset</button>
+        <button id="favClose" class="fav-btn" title="Close menu">Close</button>
+      </div>
+      <div class="hint">Tip: press Shift+F to cycle. Your choice is saved locally.</div>
+    </div>
+  </div>
+
   <!-- Rotating Icon (bottom-right) -->
   <div id="staticSlideMenu" class="" aria-live="polite">
     <a id="staticSlideLink" href="https://sites.google.com/view/staticquasar931/google-form" target="_blank" rel="noopener" aria-label="Open Google Form">
-      <img id="staticSlideImg" src="https://res.cloudinary.com/dcsrqennd/image/upload/v1747533056/raw_um4pvq.png" alt="StaticQuasar931 Google Form - feedback & game requests" />
+      <img id="staticSlideImg" src="https://res.cloudinary.com/dcsrqennd/image/upload/v1747533056/raw_um4pvq.png" alt="StaticQuasar931 Google Form - feedback and game requests" />
     </a>
   </div>
 
@@ -125,11 +195,11 @@
     <h1>Bank Robbery 2 - Unblocked Heist Shooter</h1>
     <p><strong>Bank Robbery 2</strong> drops you into a high stakes heist: secure the vault, fend off guards, and make a clean getaway. This page by <strong>StaticQuasar931</strong> runs the game <strong>unblocked</strong> and <strong>school-safe</strong> on Chromebook, PC, and mobile. It is optimized for fast loads, fullscreen support, and reliable input across devices. If a version fails to load, try again or check your network filter rules.</p>
     <ul>
-      <li>💰 Heist gameplay with intense firefights and quick escapes</li>
-      <li>🧠 Plan the route, manage ammo, coordinate your getaway</li>
-      <li>💻 Chromebook, PC, and mobile compatible with pointer lock</li>
-      <li>🪄 Free, fullscreen, no download required, works at school</li>
-      <li>🔗 Part of the StaticQuasar931 unblocked games library</li>
+      <li>Heist gameplay with intense firefights and quick escapes</li>
+      <li>Plan the route, manage ammo, coordinate your getaway</li>
+      <li>Chromebook, PC, and mobile compatible with pointer lock</li>
+      <li>Free, fullscreen, no download required, works at school</li>
+      <li>Part of the StaticQuasar931 unblocked games library</li>
     </ul>
     <p>Keywords: Bank Robbery 2, bank robbery unblocked, heist FPS browser, school safe shooter, Chromebook action game, StaticQuasar931, static, staticquasar931, static 931, staticq, staticq931, 931, unbl0cked game, unblocked g@me, bank robbery 2 unblocked at school, bank robbery 2 working at school.</p>
   </div>
@@ -171,11 +241,11 @@
 
       const FORM = {
         src: "https://res.cloudinary.com/dcsrqennd/image/upload/v1747533056/raw_um4pvq.png",
-        alt: "StaticQuasar931 Google Form - feedback & game requests",
+        alt: "StaticQuasar931 Google Form - feedback and game requests",
         link:"https://sites.google.com/view/staticquasar931/google-form"
       };
       const INSTA = {
-        src: "https://res.cloudinary.com/dcsrqennd/image_upload/v1747533158/raw_cw34yi.png".replace("_upload","/upload"), // guard against copy typos
+        src: "https://res.cloudinary.com/dcsrqennd/image/upload/v1747533158/raw_cw34yi.png",
         alt: "StaticQuasar931 Instagram (opens in a new tab)",
         link:"https://www.instagram.com/freeschoolgamepage/"
       };
@@ -232,7 +302,7 @@
       addEventListener('blur', () => down.clear());
     })();
 
-    // Favicon switcher with memory
+    // Favicon switcher with memory + top right UI
     (function(){
       const KEY = "sq931_favicon_choice";
       const favs = [
@@ -244,6 +314,12 @@
         "https://res.cloudinary.com/dcsrqennd/image/upload/v1747533158/raw_cw34yi.png"
       ];
       const link = document.getElementById("favLink");
+      const toggle = document.getElementById("favToggle");
+      const panel = document.getElementById("favPanel");
+      const closeBtn = document.getElementById("favClose");
+      const resetBtn = document.getElementById("favReset");
+      const cycleBtn = document.getElementById("favCycle");
+      const choices = Array.from(document.querySelectorAll(".fav-choice"));
 
       function setFavicon(url){
         if (!link) return;
@@ -255,13 +331,54 @@
       if (Number.isNaN(idx) || idx < 0 || idx >= favs.length) idx = 0;
       setFavicon(favs[idx]);
 
-      // Switcher: Shift+F cycles, persists to localStorage
+      function updateActive(){
+        choices.forEach(c => c.classList.toggle("active", parseInt(c.dataset.index,10) === idx));
+      }
+      updateActive();
+
+      // Keyboard switcher: Shift+F cycles, persists to localStorage
       addEventListener("keydown", (e)=>{
-        if (e.key.toLowerCase() === "f" && e.shiftKey){
+        if (e.key && e.key.toLowerCase() === "f" && e.shiftKey){
           idx = (idx + 1) % favs.length;
           setFavicon(favs[idx]);
           try { localStorage.setItem(KEY, String(idx)); } catch(_) {}
+          updateActive();
         }
+      });
+
+      // UI interactions
+      toggle.addEventListener("click", ()=>{
+        const open = panel.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", String(open));
+        panel.setAttribute("aria-hidden", String(!open));
+      });
+      closeBtn.addEventListener("click", ()=>{
+        panel.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+        panel.setAttribute("aria-hidden", "true");
+      });
+      resetBtn.addEventListener("click", ()=>{
+        idx = 0;
+        setFavicon(favs[idx]);
+        try { localStorage.setItem(KEY, String(idx)); } catch(_) {}
+        updateActive();
+      });
+      cycleBtn.addEventListener("click", ()=>{
+        idx = (idx + 1) % favs.length;
+        setFavicon(favs[idx]);
+        try { localStorage.setItem(KEY, String(idx)); } catch(_) {}
+        updateActive();
+      });
+      choices.forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const i = parseInt(btn.dataset.index,10);
+          if (!Number.isNaN(i)){
+            idx = i;
+            setFavicon(favs[idx]);
+            try { localStorage.setItem(KEY, String(idx)); } catch(_) {}
+            updateActive();
+          }
+        });
       });
 
       // Also expose a programmatic API if needed
@@ -271,10 +388,11 @@
         idx = ((newIndex % favs.length) + favs.length) % favs.length;
         setFavicon(favs[idx]);
         try { localStorage.setItem(KEY, String(idx)); } catch(_) {}
+        updateActive();
       };
     })();
 
-    // Auto fit iframe on resize just in case
+    // Auto fit iframe on resize
     (function(){
       const el = document.getElementById("game");
       function fit(){ el.style.width = innerWidth + "px"; el.style.height = innerHeight + "px"; }
